@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Scans within the base package of the application for @Component classes to configure as beans -->
+    <context:component-scan base-package="com.epam.hostel"/>
+    <!--find property file. See bean id='dataSource' for example ${jdbc.hsqldb.driverClass}-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="userDAO" class="com.epam.hostel.dao.UserDAO">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="roomDAO" class="com.epam.hostel.dao.RoomDAO">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="orderDAO" class="com.epam.hostel.dao.OrderDAO">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="userService" class="com.epam.hostel.service.impl.UserServiceImpl">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <bean id="roomService" class="com.epam.hostel.service.impl.RoomServiceImpl">
+        <property name="roomDAO" ref="roomDAO"/>
+    </bean>
+
+    <bean id="orderService" class="com.epam.hostel.service.impl.OrderServiceImpl">
+        <property name="orderDAO" ref="orderDAO"/>
+    </bean>
+
+
+</beans>

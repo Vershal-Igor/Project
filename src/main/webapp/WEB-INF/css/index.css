@@ -1,0 +1,60 @@
+body {
+    overflow-x: hidden;
+}
+
+.the_lame_button {
+    border: 1px solid #5cb85c;
+    background-color: #5cb85c;
+    border-radius: 5px;
+    padding: 8px !important;
+    color: white !important;
+}
+
+.plavno1 {
+    -webkit-transition: 0.3s all ease-out;
+    -o-transition: 0.3s all ease-out;
+    -moz-transition: 0.3s all ease-out;
+}
+
+#footer1 span:hover {
+    -webkit-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+}
+
+#footer1 a {
+    -webkit-transition: 0.3s all ease-in;
+    -o-transition: 0.3s all ease-in;
+    -moz-transition: 0.3s all ease-in;
+    color: #708090;
+}
+
+#footer1 a:hover {
+    color: #2f4f4f;
+}
+
+table {
+    text-align: center;
+    margin: auto;
+    font-family: arial;
+    font-size: 155%;
+    margin-bottom: 45px;
+}
+
+table th {
+    padding: 25px;
+    color: gray;
+}
+
+table td {
+    padding: 15px;
+}
+
+.jumbotron {
+    position: relative;
+}
+
+thead th {
+    text-align: center;
+    background-color: #f5f5f5;
+}
